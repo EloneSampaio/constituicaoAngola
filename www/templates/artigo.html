@@ -1,20 +1,26 @@
-<ion-view title="Constituição Eletronica v1.0.0">
-  
-  <ion-content class="has-header">
-    
-        <ion-header-bar class="bar-dark">
-
-         <div class="row">
-           
-            <img  ng-src="img/logo.png"  class="image-list-thumb"/>
-	
-          </div>
-      </ion-header-bar>
-
+<br>
+<br><br><br>
+<div class="row padding">
+  <div ng-repeat="(id,item) in vm.dados"  class="list card" >
+    <div class="cd-timeline-block">
      
-      </ion-content>
-        
-  
-</ion-view>
-  
-    
+       <div class="list">
+                <h2>{{id}}</h2>
+                <p>{{item.titulo}}</p>
+            </div>
+             <div class="item item-body">
+                 <p class="item item-body" ng-repeat="(id,valor) in item.epigrafo">{{id}}{{valor}}</p>
+
+              </div>
+     
+     
+    </div>
+     <ion-infinite-scroll 
+            ng-if="vm.canWeLoadMoreContent()"
+            on-infinite="vm.loadMore()"  
+            distance="1%">
+        </ion-infinite-scroll>     
+  </div>
+</div>
+
+

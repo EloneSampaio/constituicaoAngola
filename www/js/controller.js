@@ -1,17 +1,26 @@
 
-var app = angular.module('app');
 
-app.controller('artigoController', ['$scope', '$firebaseObject', '$state','$firebaseArray', function ($scope, $firebaseObject, $state,$firebaseArray) {
+angular.module('app')
+    .controller('artigoController', artigoController)
+    .controller('artigoDetalheController', artigoDetalheController);
 
-    var rootrEF = firebase.database().ref().child('constituicao');
-    var object = $firebaseObject(rootrEF);
-    var array = $firebaseArray(rootrEF);
+
+artigoController.$inject = ['artigoService', '$scope', '$state'];
+artigoDetalheController.$inject = ['artigoService', '$stateParams'];
+
+function artigoController(artigoService, $scope, $state) {
+
     var vm = this;
-    var dados = null;
+    vm.dados = artigoService.getAll();
+    $scope.alterado = alterado;
     $scope.selectables = [];
-    object.$loaded()
+    vm.total = [];
+
+
+
+    artigoService.getObject()
         .then(function () {
-            angular.forEach(object, function (user) {
+            angular.forEach(vm.dados, function (user) {
                 $scope.selectables.push(user.artigo);
 
             });
@@ -20,14 +29,25 @@ app.controller('artigoController', ['$scope', '$firebaseObject', '$state','$fire
 
     $scope.someModel = $scope.selectables[0];
 
-    $scope.alterado = function (newValor, oldValor) {
-        array.$loaded().then(function (x) {
-            var post = x.$getRecord('artigo'+newValor);
-            console.log(post);
-        }).catch(function (error) {
-            console.log("Error:", error);
-        });
+    function alterado(newValor, oldValor) {
+        $state.go('app.home/artigo', { id: newValor });
+
     }
 
-}]);
+}
+
+
+function artigoDetalheController(artigoService, $stateParams) {
+
+    var vm = this;
+
+    artigoService.getArray().then(function (x) {
+        var post = x.$getRecord('artigo' + $stateParams.id);
+        vm.artigo = post;
+
+        console.log(post);
+    });
+
+
+}
 

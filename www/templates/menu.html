@@ -1,33 +1,32 @@
-    <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable bar-dark" >
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-pane ion-side-menu-content drag-content="false" >
+         <ion-nav-bar class="bar-stable bar-dark">
+            <ion-nav-buttons side="left">
+                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        
+        <ion-view>
+          <section ui-view>
+            <section ui-view="menuTop"></section>
+            <section ui-view="conteudo"></section>
+          </section>
+        </ion-view>
+        <
+    </ion-pane>
 
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent">
 
-      
-    </ion-nav-view>
-
-  </ion-side-menu-content>
-
-
-  <ion-side-menu side="left">
+   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
       <h1 class="title"></h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-       
+
         <ion-item menu-close href="#/app/home">
           Home
         </ion-item>
-     
+
       </ion-list>
     </ion-content>
   </ion-side-menu>
