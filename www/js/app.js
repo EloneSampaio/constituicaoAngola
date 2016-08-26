@@ -6,23 +6,20 @@
 var app = angular.module('app', ['ionic', 'ionic-modal-select', 'firebase'])
 
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+    $ionicConfigProvider.views.maxCache(0);
+    
   $stateProvider
 
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: 'templates/menu.html',
+      templateUrl: 'templates/menu.html'
     })
 
     .state('app.home', {
       url: '/home',
       views: {
-        'menuTop': {
-          templateUrl: 'templates/menutop.html',
-          controller: 'artigoController',
-          controllerAs: 'vm'
-        },
         'conteudo': {
           templateUrl: 'templates/artigo.html',
           controller: 'artigoController',
@@ -31,12 +28,25 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('app.home/artigo', {
-      url: '/home/artigo/:id',
+    .state('app.artigo', {
+      url: '/artigo/:id',
 
       templateUrl: 'templates/artigoDetalhe.html',
       controller: 'artigoDetalheController',
       controllerAs: 'vm'
+
+
+    })
+
+     .state('app.busca', {
+      url: '/busca',
+       views: {
+         'conteudo': {
+      templateUrl: 'templates/menutop.html',
+      controller: 'artigoController',
+      controllerAs: 'vm'
+         }
+       }
 
 
     })

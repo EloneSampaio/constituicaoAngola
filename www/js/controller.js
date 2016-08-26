@@ -11,7 +11,7 @@ artigoDetalheController.$inject = ['artigoService', '$stateParams'];
 function artigoController(artigoService, $scope, $state) {
 
     var vm = this;
-    vm.dados = artigoService.getAll();
+    vm.dados = artigoService.lista();
     $scope.alterado = alterado;
     $scope.selectables = [];
     vm.total = [];
@@ -20,7 +20,7 @@ function artigoController(artigoService, $scope, $state) {
 
     artigoService.getObject()
         .then(function () {
-            angular.forEach(vm.dados, function (user) {
+            angular.forEach(artigoService.getAll(), function (user) {
                 $scope.selectables.push(user.artigo);
 
             });
@@ -30,9 +30,23 @@ function artigoController(artigoService, $scope, $state) {
     $scope.someModel = $scope.selectables[0];
 
     function alterado(newValor, oldValor) {
-        $state.go('app.home/artigo', { id: newValor });
+        $state.go('app.artigo', { id: newValor },{reload:true});
 
     }
+
+     vm.loadMore = function () {
+
+      console.log('carregando');
+
+      artigoService.loadMore();  // calling the .next() method inside the Items service
+
+      if (!artigoService.hasNext()) 
+      { vm.noMoreItemsToLoad = true; }
+
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+
+    }
+  
 
 }
 
@@ -50,4 +64,5 @@ function artigoDetalheController(artigoService, $stateParams) {
 
 
 }
+
 

@@ -1,4 +1,43 @@
-.image-list-thumb {
-    padding: 2px 2px 2px 2px;
-    height: 100px;
+
+#text-title{
+    text-align: center;
+    font-weight: bolder;
 }
+/* IE9  - Also picked up by most modern browsers */
+::selection {
+  background:#AC2937;
+  color:#FFF;
+  text-shadow:none;
+}
+/* Safari & Chrome - Webkit Rendering */
+::-webkit-selection {
+  background:#AC2937;
+  color:#FFF;
+  text-shadow:none;
+}
+/* Mozilla based - Gecko Rendering */ 
+::-moz-selection {
+  background:#AC2937;
+  color:#FFF;
+  text-shadow:none;
+}
+
+/* Green Paragraph Custom Selection Colours */
+.green-select::selection {
+  background:#009E30;
+  color:#FFF;
+  text-shadow:none;
+}
+
+.green-select::-webkit-selection {
+  background:#009E30;
+  color:#FFF;
+  text-shadow:none;
+}
+
+.green-select::-moz-selection {
+  background:#009E30;
+  color:#FFF;
+  text-shadow:none;
+}
+

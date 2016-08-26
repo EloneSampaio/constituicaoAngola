@@ -1,26 +1,34 @@
-<br>
-<br><br><br>
-<div class="row padding">
-  <div ng-repeat="(id,item) in vm.dados"  class="list card" >
-    <div class="cd-timeline-block">
-     
-       <div class="list">
-                <h2>{{id}}</h2>
-                <p>{{item.titulo}}</p>
+<ion-view>
+<ion-content class="animate-fade-slide-in">
+          <div class="item card-item">
+            <div  class="card stable-bg ink ink-dark" ng-repeat="(id,item) in vm.dados track by id">
+                <div class="item item-avatar item-text-wrap">
+                   <h2 id="text-title">Artigo {{item.artigo}}
+                    </h2>
+                    <h2 id="text-title">{{item.titulo}}
+                    </h2>
+                    <br />
+                    
+                    <div class="card-footer green-select" ng-repeat-start="(id,valor) in item.epigrafo">
+                      
+                        <div class="pull-left">
+                          
+                         {{id}}     {{valor}}
+                    </div>
+                </div>
+                 <br><br ng-repeat-end />
             </div>
-             <div class="item item-body">
-                 <p class="item item-body" ng-repeat="(id,valor) in item.epigrafo">{{id}}{{valor}}</p>
-
-              </div>
+        </div>
+          </div>
+    <ion-infinite-scroll
+    ng-show="vm.dados.length"
+    on-infinite="vm.loadMore()"
+        distance="1%"
+        immediate-check="true"
      
-     
-    </div>
-     <ion-infinite-scroll 
-            ng-if="vm.canWeLoadMoreContent()"
-            on-infinite="vm.loadMore()"  
-            distance="1%">
-        </ion-infinite-scroll>     
-  </div>
-</div>
-
+        >
+  </ion-infinite-scroll>
+</ion-content>
+</ion-view>
+  
 

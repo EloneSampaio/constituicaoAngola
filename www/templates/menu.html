@@ -1,33 +1,55 @@
 <ion-side-menus enable-menu-with-back-views="false">
-    <ion-pane ion-side-menu-content drag-content="false" >
-         <ion-nav-bar class="bar-stable bar-dark">
-            <ion-nav-buttons side="left">
-                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-            </ion-nav-buttons>
-        </ion-nav-bar>
-        
-        <ion-view>
-          <section ui-view>
-            <section ui-view="menuTop"></section>
-            <section ui-view="conteudo"></section>
-          </section>
-        </ion-view>
-        <
-    </ion-pane>
+  <ion-pane ion-side-menu-content drag-content="false">
+    <ion-nav-bar class="bar-stable bar-dark">
+      <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-view>
+      <section ui-view>
+        <section ui-view="menuTop"></section>
+        <section ui-view="conteudo"></section>
+      </section>
+    </ion-view>
+    < </ion-pane>
 
 
-   <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
-      <h1 class="title"></h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
+      <ion-side-menu side="left">
+        <ion-header-bar class="bar-stable">
+          <h1 class="title">Legislação Eletronica </h1>
+        </ion-header-bar>
+        <ion-content>
+          <ion-list>
 
-        <ion-item menu-close href="#/app/home">
-          Home
-        </ion-item>
+            <ion-item menu-close href="#/app/home">
+              <div>
+                <a class="item item-icon-left" href="#/app/home">
+                  <i class="icon ion-person"></i>Constituição
+                </a>
 
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+                <a class="item item-icon-left" href="#/app/busca">
+                  <i class="icon ion-navicon-round"></i>Pesquisar
+                </a>
+
+
+              </div>
+            </ion-item>
+            <ion-item menu-close href="#/app/home">
+              <div>
+                <a class="item item-icon-left" href="#/app/home">
+                  <i class="icon ion-person"></i>Código Civil
+                </a>
+
+                <a class="item item-icon-left" href="#">
+                  <i class="icon ion-navicon-round"></i>Pesquisar
+                </a>
+
+
+              </div>
+            </ion-item>
+
+          </ion-list>
+        </ion-content>
+      </ion-side-menu>
 </ion-side-menus>

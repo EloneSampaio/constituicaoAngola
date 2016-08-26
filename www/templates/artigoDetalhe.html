@@ -1,17 +1,20 @@
-<br>
-<br><br><br>
-<div class="row padding">
-     <div class="cd-timeline-block">
-      <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
-    
-      <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
-      <div class="list card">
-        <h1>{{vm.artigo.id}}</h1>
-        <p class="marginTop5 cd-author">{{vm.artigo.titulo}}</p>
-      </div>
-      <div class="item item-body"  style="background-color: #eee;">
-        <p class="marginTop5 cd-author" ng-repeat="(id,valor) in vm.artigo.epigrafo">{{id}}{{valor}}</p>
+<div class="item card-item">
+  <div class="card stable-bg ink ink-dark">
+    <div class="item item-avatar item-text-wrap">
+      <h2 id="text-title">Artigo {{vm.artigo.artigo}}
+      </h2>
+      <h2 id="text-title">{{vm.artigo.titulo}}
+      </h2>
+      <br />
 
+      <div class="card-footer green-select" ng-repeat-start="(id,valor) in vm.artigo.epigrafo">
+
+        <div class="pull-left">
+
+          {{id}} {{valor}}
+        </div>
+      </div>
+      <br><br ng-repeat-end />
     </div>
   </div>
 </div>

@@ -6,12 +6,16 @@ function artigoService($firebaseObject, $firebaseArray) {
     var rootrEF = firebase.database().ref().child('constituicao');
     var object = $firebaseObject(rootrEF);
     var array = $firebaseArray(rootrEF);
+     var scrollRef = new firebase.util.Scroll(rootrEF, 'artigo');
 
     return {
         getArray: getArray,
         getObject: getObject,
         getAll: getAll,
-        getByArtigo: getByArtigo
+        getByArtigo: getByArtigo,
+        lista:lista,
+        loadMore: loadMore,
+        hasNext: hasNext
     }
 
 
@@ -31,11 +35,27 @@ function artigoService($firebaseObject, $firebaseArray) {
 
     function getByArtigo() {
 
-        var query = rootrEF.orderByChild("artigo").limitToLast(2);
+        var query = rootrEF.orderByChild("artigo");
         return $firebaseArray(query);
 
 
     }
+
+     function lista() {
+          scrollRef.scroll.next(6);
+             return $firebaseArray(scrollRef);
+
+
+        }
+
+        function loadMore() {
+            scrollRef.scroll.next(4);
+        }
+
+        function hasNext() {
+            if (scrollRef.scroll.hasNext()) { return true; }
+            else { return false; }
+        }
 
 
 }
